@@ -47,7 +47,7 @@ class Runner:
         for i, (name, score) in enumerate(sorted(self.scores.items(), key=lambda x: x[1], reverse=True)):
             score_line = f"{i + 1}.   {name}: {score}."
             logging.info(score_line)
-            print(score_line)
+            # print(score_line)
 
     @staticmethod
     def run_in_memory(game: games.Game) -> None:

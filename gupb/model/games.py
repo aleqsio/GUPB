@@ -79,13 +79,13 @@ class Game(statemachine.StateMachine):
                 death = ChampionDeath(champion, self.episode)
                 self.deaths.append(death)
         self.champions = alive
-        if len(self.champions) == 1:
-            logging.debug(f"Champion {self.champions[0].controller.name} was the last one standing.")
-            champion = self.champions.pop()
-            death = ChampionDeath(champion, self.episode)
-            self.deaths.append(death)
-        if not self.champions:
-            self.finished = True
+        # if len(self.champions) == 1:
+        #     logging.debug(f"Champion {self.champions[0].controller.name} was the last one standing.")
+        #     champion = self.champions.pop()
+        #     death = ChampionDeath(champion, self.episode)
+        #     self.deaths.append(death)
+        # if not self.champions:
+        #     self.finished = True
 
     def _champion_action(self) -> None:
         champion = self.action_queue.pop()
