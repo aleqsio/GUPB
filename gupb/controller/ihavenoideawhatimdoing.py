@@ -1,7 +1,5 @@
 from queue import SimpleQueue
 
-import pygame
-import math
 from gupb.model import arenas
 from gupb.model import characters
 from gupb.model import coordinates
@@ -9,7 +7,6 @@ from gupb.model import weapons
 from gupb.model import tiles
 # noinspection PyUnusedLocal
 # noinspection PyMethodMayBeStatic
-from timeit import default_timer as timer
 
 dirs = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 MIST_TTH: int = 5
@@ -147,7 +144,6 @@ class IHaveNoIdeaWhatImDoingController:
                 
     def decide(self, knowledge: characters.ChampionKnowledge) -> characters.Action:
         decision = None
-        start = timer()
         self.updateTiles(knowledge)
         if(knowledge.position not in self.heading_map or self.heading_map[knowledge.position]["distance"] > 2):
             self.computeHeadingMap()
@@ -162,8 +158,6 @@ class IHaveNoIdeaWhatImDoingController:
         if(decision[1] is characters.Action.STEP_FORWARD):
             self.pickupWeapon(knowledge, self.facing)
         self.time += 1
-        end = timer()
-        print(end - start)  # Time in seconds, e.g. 5.38091952400282
         return decision[1]
 
     def pickupWeapon(self, knowledge, facing):
